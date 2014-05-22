@@ -10,12 +10,14 @@
 ### Grund
 * Wieviele Vergleiche kann ich wirklich sparen im Vergleich zum naiven Algorithmus?
 * Ist das nur für automatische Verarbeitung interessant, oder auch ein “fühlbarer” Unterschied?
+* Heuristiken ermöglichen häufig sehr effiziente Algorithmen (Paradebeispiel A*). Gilt der deutliche Vorteil auch bei der Suche auf Strings?
+* Boyer-Moore vergleicht die Fenster von hinten und unterscheided sich deutlicher vom naiven Ansatz, als die Anderen.
 
 ## Datensätze
 
 ### Textcorpus Shakespeare
 * schon vorhanden
-* im englischen gibt es Buchstabenkombinationen, die sehr häufig vorkommen (Endung -ing, viele andere [http://norvig.com/ngrams/count_3l.txt])
+* im englischen gibt es Buchstabenkombinationen, die sehr häufig vorkommen (Endung -ing, viele andere [link](http://norvig.com/ngrams/count_3l.txt))
 * diese sollten ermöglichen das Fenster relativ weit springen können
 * 37 Texte, ~4MB
 * Vermutlich reicht Test auf einem davon
@@ -37,5 +39,6 @@
 ### auf CLMET
 * alle Vorkommen finden
 * Laufzeit messen (geht das unter 1 sek?)
+* Wenn ja Corpus noch vergrößern (aber in RAM bleiben)
 * kurze & häufige Wörter
 * seltene
