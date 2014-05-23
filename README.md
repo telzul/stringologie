@@ -28,17 +28,28 @@
 * ich will alle Dokumente zu einem zusammenführen 
 * darauf alle Vorkommen eines Wortes suchen
 
+### Künstlicher Corpus
+* Begrenztes Alphabet (5 Zeichen)
+* 2 Texte, einmal Zeichen gleichverteilt, einmal Unterschiedlich
+* Zufallsmuster
+
 ## Erwartete Ergebnisse
 
 ### Auf Shakespeare
-* Vergleiche Zählen
-* Fensterverschiebung (max/avg)
+* Zu Messen 
+    - Vergleiche Zählen
+    - Fensterverschiebung (max/avg)
 * Gewinnt Boyer-Moore wegen den Vergleichen von hinten (-ing)?
 * Gewinnt Heuristik bei Suche nach Wörtern mit seltenen Buchstaben (x, q)?
 
 ### auf CLMET
-* alle Vorkommen finden
-* Laufzeit messen (geht das unter 1 sek?)
-* Wenn ja Corpus noch vergrößern (aber in RAM bleiben)
-* kurze & häufige Wörter
-* seltene
+* Zu Messen
+    - alle Vorkommen finden
+    - Laufzeit (geht das unter 1 sek?)
+      Wenn ja Corpus noch vergrößern (aber in RAM bleiben)
+* Dimensionen Suchmuster: Länge, Häufigkeit in Text
+
+### Künstlicher Corpus
+* Dimension Suchmuster: Länge (50 Zeichen vs. 5)
+* Bei langem sollte Boyer-Moore deutlich überlegen sein
+* Heuristik sollte bei Gleichverteilter Buchstabenhäufigkeit wertlos sein
