@@ -39,8 +39,8 @@
 * Zu Messen 
     - Vergleiche Zählen
     - Fensterverschiebung (max/avg)
-* Gewinnt Boyer-Moore wegen den Vergleichen von hinten (-ing)?
-* Gewinnt Heuristik bei Suche nach Wörtern mit seltenen Buchstaben (x, q)?
+* Boyer-Moore sollte wegen den Vergleichen von hinten (-ing) gewinnen
+* Heuristik bei Suche nach Wörtern mit seltenen Buchstaben (x, q) evtl. im Vorteil
 
 ### auf CLMET
 * Zu Messen
@@ -48,6 +48,7 @@
     - Laufzeit (geht das unter 1 sek?)
       Wenn ja Corpus noch vergrößern (aber in RAM bleiben)
 * Dimensionen Suchmuster: Länge, Häufigkeit in Text
+* Erwartung s.o.
 
 ### Künstlicher Corpus
 * Dimension Suchmuster: Länge (50 Zeichen vs. 5)
