@@ -29,6 +29,9 @@ class BoyerMoore < SearchAlgorithm
           break
         end
       end
+      if j == shift.length
+        shift << 1
+      end
     end
     shift
   end
@@ -95,10 +98,10 @@ end
 
 
 naive = Naive.new
-boyerm = BoyerMoore.new
-pat = "ababba"
-text = "aabbababbababbba"
-
+boyerm = BoyerMoore.new #doesnt work maybe http://www-igm.univ-mlv.fr/~lecroq/string/node14.html can help
+pat = "gcagagag"
+text = "abcabacbacbcaabccba"
+p boyerm.bm_shift(pat)
 p boyerm.search(pat, text, all_occurrences=false)
 
 p naive.search(pat, text, all_occurrences=false)

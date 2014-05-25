@@ -71,7 +71,7 @@
 			"file": "algorithms.rb",
 			"settings":
 			{
-				"buffer_size": 2266,
+				"buffer_size": 2431,
 				"line_ending": "Unix"
 			}
 		}
@@ -211,23 +211,23 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2266,
+						"buffer_size": 2431,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2084,
-								2084
+								2211,
+								2211
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
-						"translation.x": 0.0,
-						"translation.y": 102.0,
+						"translation.x": 401.0,
+						"translation.y": 1530.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
