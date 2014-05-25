@@ -1,0 +1,320 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tr",
+				"true"
+			],
+			[
+				"bm",
+				"bm_shift"
+			],
+			[
+				"bed",
+				"bed_1"
+			],
+			[
+				"all",
+				"all_occurrences"
+			],
+			[
+				"find",
+				"find_text	function"
+			],
+			[
+				"f",
+				"f	statement"
+			],
+			[
+				"author",
+				"author"
+			],
+			[
+				"li",
+				"listdir	function"
+			],
+			[
+				"te",
+				"text_id	param"
+			],
+			[
+				"get",
+				"get_object_or_404	function"
+			],
+			[
+				"H",
+				"HttpResponse	import"
+			],
+			[
+				"auth",
+				"author_id	param"
+			],
+			[
+				"autho",
+				"author_id"
+			],
+			[
+				"Author",
+				"Author"
+			],
+			[
+				"mat",
+				"matches"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "algorithms.rb",
+			"settings":
+			{
+				"buffer_size": 2266,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 516.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/robert/dev/stringologie/src/algorithms.sublime-project",
+		"/home/robert/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/media/robert/ECF881A3F8816D20/Documents and Settings/Ro/Downloads/Corpora/2468/2468/orford.txt",
+		"/home/robert/dev/python/wordtracer/corpora/templates/texts/detail.html",
+		"/home/robert/dev/python/wordtracer/corpora/templates/authors/detail.html",
+		"/home/robert/dev/python/wordtracer/corpora/templates/texts/index.html",
+		"/home/robert/dev/python/wordtracer/corpora/templates/authors/index.html",
+		"/home/robert/dev/python/lampeter_parser.py",
+		"/home/robert/dev/python/wordtracer/corpora/models.py",
+		"/home/robert/dev/python/wordtracer/corpora/views.py",
+		"/home/robert/dev/python/wordtracer/wordtracer/urls.py",
+		"/home/robert/dev/python/wordtracer/corpora/urls/authors.py",
+		"/home/robert/dev/python/wordtracer/corpora/urls/texts.py",
+		"/home/robert/dev/python/wordtracer/corpora/admin.py",
+		"/home/robert/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/robert/dev/python/wordtracer/corpora/author_urls.py",
+		"/home/robert/Dropbox/Uni/Master/SS14/Stringologie/projekt.md",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week3 - lxml/shakespeare_scraper.py",
+		"/home/robert/dev/DHLeipzig/shakespeare_project/lampeter_parser.py",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week5/Data/edgeworth-parents.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week5/Data/burgess-busterbrown.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week5/Data/milton-paradise.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/output/output_detailed.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Shakespeare_Project/output.json",
+		"/home/robert/Dropbox/Uni/Master/WS1314/Information Retrieval/Zusammenfassung.md",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week5/Data/carroll-alice.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/hebrew_greek_matcher.py",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/hebrew_greek_matcher.py~",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/greek.xml",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/output_detailed.txt",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/output.txt",
+		"/home/robert/dev/DHLeipzig/Texts/Week 4/hebrew_dict.xml",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/greek_wordsold.xml",
+		"/home/robert/dev/DHLeipzig/telzul/Homework/week4 - bible/greek_words.xml",
+		"/home/robert/dev/DHLeipzig/Texts/Week 4/hebrew_no_errors.dump",
+		"/home/robert/dev/DHLeipzig/Texts/Week 4/greek_words.xml",
+		"/home/robert/.themes/MyNew-Minty/cinnamon/cinnamon.css",
+		"/home/robert/dev/python/djangotest/testsite/polls/admin.py",
+		"/home/robert/dev/python/djangotest/testsite/polls/models.py",
+		"/home/robert/dev/python/djangotest/testsite/testsite/settings.py",
+		"/home/robert/dev/DHLeipzig/telzul/output.txt",
+		"/home/robert/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+		"/home/robert/dev/python/djangotest/testsite/polls/models.pyc",
+		"/home/robert/Downloads/search.csv",
+		"/home/robert/Downloads/cache/epub/35/pg35.rdf",
+		"/home/robert/Downloads/cache/epub/1/pg1.rdf"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"item",
+			"result_count",
+			"end",
+			"Algorithm",
+			"	",
+			"Alice",
+			"id=\"Son.",
+			".. .. .."
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"    ",
+			"id=\"Sol."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "algorithms.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2084,
+								2084
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 151.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "algorithms.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 50.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
