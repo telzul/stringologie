@@ -1,181 +1,126 @@
 class SearchAlgorithm
-    def search(pat, text, all_occurrences=false)
-        "implement in subclass"
-    end
-end
-
-class Other
-
-end
-
-class BoyerMoore < SearchAlgorithm
-    
-    def occ(alphabetstr, pat)
-        occs = {}
-        for c in alphabetstr.chars
-            occs[c] = -1
-        end
-        0.upto(pat.length-1) do |i| 
-            occs[pat[i]] = i
-        end
-        occs
-    end
-
-    def suffixes(pat)
-        suff = Array.new(pat.length)
-        suff[pat.length-1] = pat.length
-        g = pat.length-1
-        (pat.length-2).downto(0) do |i|
-            p suff
-            p "i: #{i}"
-            p "g: #{g}"
-            f = i
-            if i > g && suff[i+pat.length-1-f] != i-g
-                suff[i] = [suff[i+pat.length-1-f], i-g].min
-            else
-                p "prev f: #{f}"
-                f = i
-                g = [g, i].min
-                p "prev g: #{g}"
-                while g >= 0 && pat[g] == pat[g+pat.length-1-f]
-                    p g
-                    g -= 1
-                end
-              
-                p "f: #{f}"
-                p "g: #{g}"
-                suff[i] = f-g
-            end
-        end
-        suff
-    end
-
-    def bed_1(j, s, pat)#match
-        result = true
-        for k in (j+1..pat.length)
-            p "bed_1, k: #{k}"
-            if s > k
-                next
-            elsif pat[k-s-1] != pat[k-1]
-                p "bed_1 pat[k-s-1] (#{k-s-1}, #{pat[k-s-1]}) != pat[k-1] (#{k-1}, #{pat[k-1]})"
-                return false
-            end
-        end
-        true
-    end
-
-    def bed_2(j, s, pat) #mismatch
-        if s < j
-            return pat[j-s] != pat[j]
-        else
-            return true
-        end
-    end
-    
-    def weak_shift(pat)
-        shift = []
-        for j in (0..pat.length-1)
-            p "weak_shift, j: #{j}"
-            1.upto(pat.length) do |s|
-            p "weak_shift, s: #{s}"
-                if bed_1(j, s, pat)
-                    p "weak_shift, bed_1 true"        
-                    shift << s
-                    break
-                end
-            end
-        end
-        shift
-    end
-
-    def bm_shift(pat)
-        shift = []
-        for j in (0..pat.length-1)
-            for s in (1..pat.length-1)
-                if bed_1(j,s, pat) && bed_2(j,s, pat)
-                    shift << s
-                    break
-                end
-            end
-            if j == shift.length
-                shift << 1
-            end
-        end
-        shift
-    end
-
-    def search(pat, text, all_occurrences=false)
-        shift = bm_shift(pat)
-        step_count = 0
-        result_count = 0
-        i = 0
-        m = pat.length
-        n = text.length
-        while i <= n-m do
-            j = m
-            while j > 0 and pat[j-1] == text[i+j-1] do
-                j -= 1
-            end
-            step_count += j == m ? 1 : m-j
-            if j == 0
-                result_count += 1
-                unless all_occurrences
-                    return {step_count: step_count, result_count: result_count }
-                end
-            end
-            i += shift[j-1]
-        end
-
-        return {step_count: step_count, result_count: result_count }
-    end
+  def search(pat, text, all_occurrences=false)
+    "implement in subclass"
+  end
 end
 
 class Naive < SearchAlgorithm
-    def search(pat, text, all_occurrences=false)
-        step_count = 0
-        result_count = 0
-        i = 0
-        m = pat.length
-        n = text.length
-        while i <= n-m do
-            j = 0
-            while j < m && pat[j] == text[i+j] do
-                j += 1
-            end
-            step_count += j == 0 ? 1 : j
-            if j == m
-                result_count += 1
-                unless all_occurrences
-                    return {step_count: step_count, result_count: result_count }
-                end
-            end
-            i += 1
+  def search(pat, text, all_occurrences=false)
+    step_count = 0
+    result_count = 0
+    i = 0
+    m = pat.length
+    n = text.length
+    while i <= n-m do
+      j = 0
+      while j < m && pat[j] == text[i+j] do
+        j += 1
+      end
+      step_count += j == 0 ? 1 : j
+      if j == m
+        result_count += 1
+        unless all_occurrences
+          return {step_count: step_count, result_count: result_count }
         end
-        return {step_count: step_count, result_count: result_count }
+      end
+      i += 1
     end
+    return {step_count: step_count, result_count: result_count }
+  end
+end
+
+class BoyerMoore < SearchAlgorithm
+  # http://www.iti.fh-flensburg.de/lang/algorithmen/pattern/bm.htm
+  def occ(pat)
+    occs = {}
+    0.upto(pat.length-1) do |i| 
+      occs[pat[i]] = i
+    end
+    occs
+  end
+
+  def good_end(pat)
+    i = pat.length
+    j = pat.length+1
+    fstart_of_broadest_border = Array.new(pat.length+1)
+    fstart_of_broadest_border[i] = j
+    smove_dist = Array.new(pat.length+1, 0)
+    while i > 0
+      while j <= pat.length && pat[i-1] != pat[j-1]
+        if smove_dist[j] == 0
+          smove_dist[j] = j-i
+        end
+        j = fstart_of_broadest_border[j]
+      end
+      i -= 1
+      j -= 1
+      fstart_of_broadest_border[i] = j
+    end
+    j = fstart_of_broadest_border[0]
+    0.upto(pat.length) do |i|
+      if smove_dist[i] == 0 
+        smove_dist[i] = j
+      end
+      if i == j
+        j = fstart_of_broadest_border[j]
+      end
+    end
+    smove_dist
+  end
+
+  def search(pat, text, all_occurrences=false)
+    i = 0    
+    step_count = 0
+    result_count = 0
+    shift = good_end(pat)
+    occs = occ(pat)
+    while i <= text.length - pat.length
+      j = pat.length - 1
+      while j >= 0 && pat[j] == text[i + j]
+        j -= 1
+      end
+      step_count += j == pat.length-1 ? 1 : pat.length-1-j
+      if j < 0
+        result_count += 1
+        unless all_occurrences
+          return {step_count: step_count, result_count: result_count }
+        end
+        i += shift[0]
+      else
+        bad_char_shift = occs[text[j+i]] ? occs[text[j+i]] : -1
+        i += [shift[j+1], j-bad_char_shift].max
+      end
+    end
+    return {step_count: step_count, result_count: result_count }
+  end
 end
 
 class InformedHeuristic < SearchAlgorithm
-    def search(pat, text, all_occurrences=false)
-        step_count = 0
-        result_count = 0
+  def search(pat, text, all_occurrences=false)
+    step_count = 0
+    result_count = 0
 
-        return {step_count: step_count, result_count: result_count }
-    end
+    return {step_count: step_count, result_count: result_count }
+  end
 end
 
 
 naive = Naive.new
 boyerm = BoyerMoore.new #doesnt work maybe http://www-igm.univ-mlv.fr/~lecroq/string/node14.html can help
-pat = "abab"
-text = "abcabacbacbcaabccba"
+pat = "ab"
+text = "ababab"
+#text = "ababab"
 #p Other.prepare_goodsuffix_heuristic(pat)
-p "pat: #{pat}"
-p "occ: #{boyerm.occ('abcd', pat)}"
-p "suf: #{boyerm.suffixes(pat)}"
+#p "pat: #{pat}"
+#p "occ: #{boyerm.occ('abcd', pat)}"
+#p "suf: #{boyerm.suffixes(pat)}"
 #p "weak_shift: #{boyerm.weak_shift(pat)}"
 #p boyerm.bm_shift(pat)
-#p boyerm.search(pat, text, all_occurrences=false)
+p boyerm.search(pat, text, all_occurrences=true)
+p naive.search(pat, text, all_occurrences=true)
+#p naive.search(pat, text, all_occurrences=false)
 
-#p naive.search(pat, text, all_occurrences=false)
-#p naive.search(pat, text, all_occurrences=false)
+#pat = "abbabab"
+#p "pat: #{pat}"
+p "occ: #{boyerm.occ(pat)}"
+p "good_end: #{boyerm.good_end(pat)}"
