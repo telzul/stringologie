@@ -96,19 +96,51 @@ class BoyerMoore < SearchAlgorithm
 end
 
 class InformedHeuristic < SearchAlgorithm
+  
+  def initialize(heuristics)
+    @char_heuristics = heuristics
+  end
+
+  def build_pat_heuristics(pat, heuristics)
+    # sort the chars by their probabilities and return the indices 
+    pat.chars.map.with_index{ |char, i| [heuristics[char],i] }.sort_by{ |entry| entry[0] }.map{ |entry| entry[1] }
+  end
+
   def search(pat, text, all_occurrences=false)
+    pat_heuristics = build_pat_heuristics(pat, @char_heuristics)
     step_count = 0
     result_count = 0
-
-    return {step_count: step_count, result_count: result_count }
+    m = pat.length
+    n = text.length
+    i = 0
+    while i <= n-(m-pat_heuristics[0]) do
+      j = 0
+      while j < m do
+        char_index = pat_heuristics[j]
+        step_count += 1
+        if pat[char_index] != text[i+char_index]
+          break
+        end
+        j += 1
+        if j == m
+          result_count += 1
+          unless all_occurrences
+            return {step_count: step_count, result_count: result_count }
+          end
+        end
+      end
+      i += 1
+    end
+    {step_count: step_count, result_count: result_count }
   end
 end
 
 
 naive = Naive.new
-boyerm = BoyerMoore.new #doesnt work maybe http://www-igm.univ-mlv.fr/~lecroq/string/node14.html can help
-pat = "ab"
-text = "ababab"
+cboyerm = BoyerMoore.new 
+heur = InformedHeuristic.new({"a" => 0.3, "b" => 0.6, "c"=>0.1 })
+pat = "abc"
+text = "abababbbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcba"
 #text = "ababab"
 #p Other.prepare_goodsuffix_heuristic(pat)
 #p "pat: #{pat}"
@@ -118,9 +150,10 @@ text = "ababab"
 #p boyerm.bm_shift(pat)
 p boyerm.search(pat, text, all_occurrences=true)
 p naive.search(pat, text, all_occurrences=true)
+p heur.search(pat, text, all_occurrences=true)
 #p naive.search(pat, text, all_occurrences=false)
 
 #pat = "abbabab"
 #p "pat: #{pat}"
-p "occ: #{boyerm.occ(pat)}"
-p "good_end: #{boyerm.good_end(pat)}"
+#p "occ: #{boyerm.occ(pat)}"
+#p "good_end: #{boyerm.good_end(pat)}"
