@@ -1,3 +1,4 @@
+
 class SearchAlgorithm
   def search(pat, text, all_occurrences=false)
     "implement in subclass"
@@ -56,13 +57,13 @@ class BoyerMoore < SearchAlgorithm
       j -= 1
       fstart_of_broadest_border[i] = j
     end
-    j = fstart_of_broadest_border[0]
-    0.upto(pat.length) do |i|
-      if smove_dist[i] == 0 
-        smove_dist[i] = j
+    j1 = fstart_of_broadest_border[0]
+    0.upto(pat.length) do |i1|
+      if smove_dist[i1] == 0 
+        smove_dist[i1] = j1
       end
-      if i == j
-        j = fstart_of_broadest_border[j]
+      if i1 == j1
+        j1 = fstart_of_broadest_border[j1]
       end
     end
     smove_dist
@@ -137,7 +138,7 @@ end
 
 
 naive = Naive.new
-cboyerm = BoyerMoore.new 
+boyerm = BoyerMoore.new 
 heur = InformedHeuristic.new({"a" => 0.3, "b" => 0.6, "c"=>0.1 })
 pat = "abc"
 text = "abababbbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcba"
