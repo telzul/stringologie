@@ -137,24 +137,4 @@ class InformedHeuristic < SearchAlgorithm
 end
 
 
-naive = Naive.new
-boyerm = BoyerMoore.new 
-heur = InformedHeuristic.new({"a" => 0.3, "b" => 0.6, "c"=>0.1 })
-pat = "abc"
-text = "abababbbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcbaabababbbbababbacbbbabcba"
-#text = "ababab"
-#p Other.prepare_goodsuffix_heuristic(pat)
-#p "pat: #{pat}"
-#p "occ: #{boyerm.occ('abcd', pat)}"
-#p "suf: #{boyerm.suffixes(pat)}"
-#p "weak_shift: #{boyerm.weak_shift(pat)}"
-#p boyerm.bm_shift(pat)
-p boyerm.search(pat, text, all_occurrences=true)
-p naive.search(pat, text, all_occurrences=true)
-p heur.search(pat, text, all_occurrences=true)
-#p naive.search(pat, text, all_occurrences=false)
 
-#pat = "abbabab"
-#p "pat: #{pat}"
-#p "occ: #{boyerm.occ(pat)}"
-#p "good_end: #{boyerm.good_end(pat)}"
