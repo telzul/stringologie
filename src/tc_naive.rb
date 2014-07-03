@@ -27,7 +27,7 @@ class TestNaive
   end
 
   def test_small5normal
-    pats = 'ABCCC'
+    pats = 'BBDBC'
     patl = 'CBCCBBACCBCCCACCCCBCBCCBCBBDCBBBCBACCCBBBDBCCABCCC'
     search_pat('small5normal', pats, patl)
   end
@@ -45,14 +45,14 @@ class TestNaive
   end
 
   def test_big5normal
-    pats = 'CCABC'
-    patl = 'CCBACCCCCBDCBCBCCDBBBBCCBBBCCBCCCABBBCBCBBCCCCCABC'
+    pats = 'CDEBC'
+    patl = 'DCCCBCABBBCCDBCAABDDCCBCDEBCCBACCCCCBDCBCBCCDBBBBC'
     search_pat('big5normal', pats, patl)
   end
   
   def test_small25normal
-    pats = 'MJRLL'
-    patl = 'SDJIMJMSHTTTFKRTILQMVPEMLKQQOMIGFNLPKFPNMLJOJMJRLL'
+    pats = 'IRYNH'
+    patl = 'UNKIOHOHLIRHOLEIUQOMHBPIRYNHLJLOLJMUGCBGJELOGEJCGP'
     search_pat('small25normal', pats, patl)
   end  
   
