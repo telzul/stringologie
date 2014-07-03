@@ -1,11 +1,12 @@
-require 'minitest/autorun'
-require 'minitest/benchmark'
+
 require_relative 'algorithms'
 
 
-class TestNaive < MiniTest::Unit::TestCase
+class TestNaive 
   def setup
     @alg = BoyerMoore.new
+    @resultss = {}
+    @resultsl = {}
   end
 
   def read_text(name)
@@ -14,12 +15,12 @@ class TestNaive < MiniTest::Unit::TestCase
   
   def search_pat(textname, pat_short, pat_long)
     text = read_text(textname)
-    p 
-    p textname + ', pattern: ' +pat_short
-    p @alg.search(pat_short, text, true)
-    p ' '
-    p textname + ', pattern: ' +pat_long
-    p @alg.search(pat_long, text, true)
+    puts
+    puts textname + ', pattern: ' +pat_short
+    @resultss[textname] = @alg.search(pat_short, text, true)
+    puts textname + ', pattern: ' +pat_long
+    @resultsl[textname] = @alg.search(pat_long, text, true)
+    puts "finished #{textname}"
   end
 
   def test_clmet
@@ -71,10 +72,32 @@ class TestNaive < MiniTest::Unit::TestCase
   end   
   
   def test_big25normal
-    pats = 'IRHGH'
-    patl = 'FGPGSMPHFNMMOGLEJMLUCUHMJIQQHRVNIFPWIVLTQMOJGIRHGH'
+    pats = 'KNYKO'
+    patl = 'KMHSCNIKPUUMLTNLMRLKOSOKNYKOMIVNKPLMHLPJBNWSSJJLPM'
     search_pat('big25normal', pats, patl)
   end
   
 
+  def write_res(filename)
+    File.open(filename, 'w') do |file| 
+      file.write("short\n")
+      @resultss.each { |k, r| file.write("#{k}; #{r[:step_count]}; #{r[:result_count]}\n") }
+      file.write("long\n")
+      @resultsl.each { |k, r| file.write("#{k}; #{r[:step_count]}; #{r[:result_count]}\n") }
+    end
+  end
+
 end
+
+t = TestNaive.new
+t.setup
+t.test_small5normal
+t.test_clmet
+t.test_big5normal
+t.test_big5uniform
+t.test_small5uniform
+t.test_big25normal
+t.test_big25uniform
+t.test_small25normal
+t.test_small25uniform
+t.write_res('res_boyermoore')
